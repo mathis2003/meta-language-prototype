@@ -18,6 +18,11 @@ public class Main {
         }
         //asEl.parsedResult().ifPresent(AbstractSyntaxElement::interpret);
 
-        System.out.println("Hello world!");
+        System.out.println("-----------");
+
+        asEl = new ExpressionElement().parse("\"hey this is my string\"");
+        if (asEl.parsedResult().isPresent()) {
+            System.out.println(asEl.parsedResult().get().interpret());
+        }
     }
 }

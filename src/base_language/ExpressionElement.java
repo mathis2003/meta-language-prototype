@@ -12,7 +12,8 @@ import java.util.function.Supplier;
 public class ExpressionElement implements AbstractSyntaxElement {
 
     public Set<Supplier<AbstractSyntaxElement>> clauses = new HashSet<>(Arrays.asList(
-            LambdaElement::new
+            LambdaElement::new,
+            StringElement::new
     ));
 
     AbstractSyntaxElement parsedExpr = null;
