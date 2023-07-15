@@ -1,16 +1,16 @@
-expr ::= <lambda> | <unary>
+expr ::= lambda | unary
 
-lambda ::= "\->" <body>
+lambda ::= "\->" body
 
-body ::= "{" <statement> "}"
+body ::= "{" statement "}"
 
-statement ::= <returnstmt> | <printstmt>
+statement ::= returnstmt | printstmt
 
-returnstmt ::= "return" <expr>
+returnstmt ::= "return" expr
 
-printstmt ::= "print" <string>
+printstmt ::= "print" string
 
-unary ::= <string> | <int>
+unary ::= string | int
 
 string ::= """  [^"]* """
 
