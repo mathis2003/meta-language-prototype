@@ -1,17 +1,22 @@
 import base_language.AbstractSyntaxElement;
 import base_language.ExpressionElement;
+import meta_lang.ParseResult;
 
 import java.util.Optional;
 
 public class Main {
     private static final String code = """
             \\->{
-                return 5
+                print "5"
             }""";
     public static void main(String[] args) {
 
-        Optional<AbstractSyntaxElement> asEl = new ExpressionElement().parse(code);
-        asEl.ifPresent(AbstractSyntaxElement::interpret);
+        ParseResult asEl = new ExpressionElement().parse(code.replaceAll("\\s+",""));
+
+        if (asEl.parsedResult().isPresent()) {
+            asEl.parsedResult().get().interpret();
+        }
+        //asEl.parsedResult().ifPresent(AbstractSyntaxElement::interpret);
 
         System.out.println("Hello world!");
     }

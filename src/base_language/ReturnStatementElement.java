@@ -1,11 +1,10 @@
-package language_extensions;
+package base_language;
 
-import base_language.AbstractSyntaxElement;
 import meta_lang.ParseResult;
 
 import java.util.Optional;
 
-public class LoopElement implements AbstractSyntaxElement {
+public class ReturnStatementElement implements AbstractSyntaxElement {
     @Override
     public ParseResult parse(String input) {
         return new ParseResult(Optional.empty(), input);
@@ -13,7 +12,6 @@ public class LoopElement implements AbstractSyntaxElement {
 
     @Override
     public Object interpret() {
-
         return null;
     }
 }

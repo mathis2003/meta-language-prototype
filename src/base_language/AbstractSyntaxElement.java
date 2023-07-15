@@ -1,12 +1,14 @@
 package base_language;
 
+import meta_lang.ParseResult;
+
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Supplier;
 
 public interface AbstractSyntaxElement {
     public Set<Supplier<AbstractSyntaxElement>> clauses = null;
-    Optional<AbstractSyntaxElement> parse(String input);
+    ParseResult parse(String input);
 
-    void interpret();
+    Object interpret();
 }

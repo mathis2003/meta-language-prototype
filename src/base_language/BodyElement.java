@@ -1,15 +1,28 @@
 package base_language;
 
+import meta_lang.ParseResult;
+
 import java.util.Optional;
 
 public class BodyElement implements AbstractSyntaxElement{
+    StatementElement stmt = null;
     @Override
-    public Optional<AbstractSyntaxElement> parse(String input) {
-        return Optional.empty();
+    public ParseResult parse(String input) {
+        if (input.charAt(0) == '{') {
+            ParseResult res = new StatementElement().parse(input.substring(1));
+            if (res.parsedResult().isPresent() && res.leftOverString().charAt(0) == '}') {
+                stmt = (StatementElement) res.parsedResult().get();
+                return new ParseResult(Optional.of(this), res.leftOverString().substring(1));
+            }
+        }
+
+        return new ParseResult(Optional.empty(), input);
     }
 
     @Override
-    public void interpret() {
+    public Object interpret() {
+
+        return stmt.interpret();
 
     }
 }

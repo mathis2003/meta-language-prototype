@@ -1,5 +1,7 @@
 package base_language;
 
+import meta_lang.ParseResult;
+
 import javax.swing.text.html.Option;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -16,21 +18,21 @@ public class ExpressionElement implements AbstractSyntaxElement {
     AbstractSyntaxElement parsedExpr = null;
 
     @Override
-    public Optional<AbstractSyntaxElement> parse(String input) {
+    public ParseResult parse(String input) {
 
         for (Supplier<AbstractSyntaxElement> clause : clauses) {
-            Optional<AbstractSyntaxElement> res = clause.get().parse(input);
-            if (res.isPresent()) {
-                parsedExpr = res.get();
-                return res;
+            ParseResult res = clause.get().parse(input);
+            if (res.parsedResult().isPresent()) {
+                parsedExpr = res.parsedResult().get();
+                return new ParseResult(Optional.of(this), res.leftOverString());
             }
         }
 
-        return Optional.empty();
+        return new ParseResult(Optional.empty(), input);
     }
 
     @Override
-    public void interpret() {
-        parsedExpr.interpret();
+    public Object interpret() {
+        return parsedExpr.interpret();
     }
 }

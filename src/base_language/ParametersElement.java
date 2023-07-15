@@ -1,15 +1,18 @@
 package base_language;
 
+import meta_lang.ParseResult;
+
 import java.util.Optional;
 
 public class ParametersElement implements AbstractSyntaxElement{
     @Override
-    public Optional<AbstractSyntaxElement> parse(String input) {
-        return Optional.empty();
+    public ParseResult parse(String input) {
+        return new ParseResult(Optional.empty(), input);
+
     }
 
     @Override
-    public void interpret() {
-
+    public Object interpret() {
+        return null;
     }
 }
