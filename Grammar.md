@@ -1,4 +1,7 @@
-expr ::= lambda | unary
+
+----- base language -----
+
+expr ::= lambda | string
 
 lambda ::= "\->" body
 
@@ -10,8 +13,10 @@ returnstmt ::= "return" expr
 
 printstmt ::= "print" string
 
-unary ::= string | int
-
 string ::= """  [^"]* """
 
 int ::= [0-9]+
+
+----- language extension -----
+
+loop ::= "for" int "to" int body
