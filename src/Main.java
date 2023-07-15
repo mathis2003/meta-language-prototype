@@ -7,7 +7,9 @@ import java.util.Optional;
 public class Main {
     private static final String code = """
             \\->{
-                print "5"
+                for 1 to 5 {
+                    print "hey"
+                }
             }""";
     public static void main(String[] args) {
 

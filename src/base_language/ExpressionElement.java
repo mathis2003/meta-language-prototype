@@ -13,7 +13,8 @@ public class ExpressionElement implements AbstractSyntaxElement {
 
     public Set<Supplier<AbstractSyntaxElement>> clauses = new HashSet<>(Arrays.asList(
             LambdaElement::new,
-            StringElement::new
+            StringElement::new,
+            IntElement::new
     ));
 
     AbstractSyntaxElement parsedExpr = null;

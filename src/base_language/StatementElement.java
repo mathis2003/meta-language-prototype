@@ -1,5 +1,6 @@
 package base_language;
 
+import language_extensions.LoopElement;
 import meta_lang.ParseResult;
 
 import java.util.Arrays;
@@ -13,7 +14,8 @@ public class StatementElement implements AbstractSyntaxElement {
 
     public Set<Supplier<AbstractSyntaxElement>> clauses = new HashSet<>(Arrays.asList(
             ReturnStatementElement::new,
-            PrintStatementElement::new
+            PrintStatementElement::new,
+            LoopElement::new
     ));
     @Override
     public ParseResult parse(String input) {
