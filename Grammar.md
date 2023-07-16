@@ -1,7 +1,7 @@
 
 ----- base language -----
 
-expr ::= lambda | string
+expr ::= lambda | string | int
 
 lambda ::= "\->" body
 
