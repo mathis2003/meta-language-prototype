@@ -3,7 +3,7 @@
 
 expr ::= lambda | string | int
 
-lambda ::= "\->" body
+lambda ::= "\\->" body
 
 body ::= "{" statement "}"
 
